@@ -268,11 +268,11 @@ void run_ssdp(int port, const char *pFriendlyName, const char * pModelName, cons
         strcpy(uuid, "deadbeef-dead-beef-dead-beefdeadbeef");
     }
     dial_port = port;
-    hw_addr = get_local_address();
-    if (hw_addr == NULL) {
-        printf("Unable to retrieve hardware address.");
-        return;
-    }
+    // hw_addr = get_local_address();
+    // if (hw_addr == NULL) {
+    //     printf("Unable to retrieve hardware address.");
+    //     return;
+    // }
     ctx = mg_start(&request_handler, NULL, SSDP_PORT);
     if (ctx == NULL) {
         printf("Unable to start SSDP master listening thread.");
@@ -283,5 +283,5 @@ void run_ssdp(int port, const char *pFriendlyName, const char * pModelName, cons
         printf("SSDP listening on %s:%d\n", ip_addr, my_port);
         handle_mcast(hw_addr);
     }
-    free(hw_addr); hw_addr = NULL;
+    // free(hw_addr); hw_addr = NULL;
 }
