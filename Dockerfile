@@ -19,9 +19,8 @@ RUN apt-get update && \
     libssl-dev
 
 # Get the current dial-reference repo
-COPY . /home/workdir
 WORKDIR /home/workdir
-RUN sed -i -e 's/get_local_address();//g' server/quick_ssdp.c
+COPY . /home/workdir
 RUN make
 
 # 2) Target stage:
